@@ -1,9 +1,16 @@
+'use client'
 import React from 'react';
 import Link from 'next/link';
 import NavLink from './NavLink';
-import HeroBanner from './Banner';
+import Image from 'next/image';
+import { authClient } from '@/lib/auth-client';
 
-const Navbar = ({user}) => {
+const Navbar = () => {
+
+  const { data: session } = authClient.useSession()
+ const user=session?.user
+
+
   return (
     <nav className="bg-white shadow-md w-full border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,17 +77,25 @@ const Navbar = ({user}) => {
             {user ? (
               // Authenticated View: Profile Picture + Logout Button
               <div className="flex items-center gap-2 sm:gap-3">
-                <img 
-                  src={user.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150"} 
-                  alt={user.displayName || "User Profile"} 
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover border-2 border-blue-500"
-                />
-                <button 
+
+<div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+  <Image
+    src={user?.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150"} 
+    alt={user?.displayName || "User Profile"} 
+    fill
+    sizes="(max-width: 640px) 32px, 40px"
+    className="rounded-full object-cover border-2 border-blue-500"
+  />
+</div>
+                {/* <button 
                   onClick={handleLogout}
                   className="px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50 rounded-lg transition-all whitespace-nowrap"
                 >
                   Logout
-                </button>
+                </button> */}
+                  <button
+className='btn btn-neutral font-bold' onClick={async()=> await authClient.signOut()}>Logout
+  </button>
               </div>
             ) : (
               // Unauthenticated View: Login + Register CTAs

@@ -12,18 +12,13 @@ const handleGoogleLogin=async()=>{
     provider: "google",
   });
 }
+const onSubmit=async(e)=>{
+e.preventDefault();
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
+const formData=new FormData(e.currentTarget);
+const data=Object.fromEntries(formData.entries())
 
-    const handle=async(data)=>{
-       
-        console.log(data)
-
+console.log(data)
         const { data:res, error } = await authClient.signIn.email({
     email: data.email, // required
     password: data.password, // required
@@ -35,11 +30,27 @@ if(error){
 }
 console.log(res,error)
     }
+
+
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+//     const handle=async(data)=>{
+       
+//         console.log(data)
+
+
+
     return (
 
         <div className='min-h-screen flex flex-col items-center justify-center px-4 py-6 sm:py-10 bg-gradient-to-br from-sky-100 to-sky-50'>
     <div className='w-full max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden'>
-    <form action="" onSubmit={handleSubmit(handle)}>
+    <form onSubmit={onSubmit}>
         <fieldset className="fieldset bg-white border-0 rounded-0 w-full border-0 p-4 sm:p-6 md:p-8">
   <legend className="fieldset-legend font-bold text-xl sm:text-2xl text-center mb-6">Login</legend>
 

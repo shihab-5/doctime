@@ -14,12 +14,16 @@ const Register = () => {
     formState: { errors },
   } = useForm()
 
-    const handle= async(data)=>{
-       
-        console.log(data)
-        const {name,email,image,password}=data
+  const onSubmit=async(e)=>{
+e.preventDefault();
 
-        const {data:res,error}=await authClient.signUp.email({
+const formData=new FormData(e.currentTarget);
+const user=Object.fromEntries(formData.entries())
+
+console.log(user)
+        const {name,email,image,password}=user
+
+   const {user:res,error}=await authClient.signUp.email({
         email:email, // user email address
         password:password, // user password -> min 8 characters by default
         name:name, // user display name
@@ -33,12 +37,12 @@ const Register = () => {
             alert('Registration successful! Redirecting to login...')
             router.push('/')
         }
-    }
+}
     return (
 
         <div className='min-h-screen flex flex-col items-center justify-center px-4 py-6 sm:py-10 bg-gradient-to-br from-sky-100 to-sky-50'>
     <div className='w-full max-w-sm bg-white rounded-2xl shadow-lg overflow-hidden'>
-    <form action="" onSubmit={handleSubmit(handle)}>
+    <form action="" onSubmit={onSubmit}>
         <fieldset className="fieldset bg-white border-0 rounded-0 w-full border-0 p-4 sm:p-6 md:p-8">
   <legend className="fieldset-legend font-bold text-xl sm:text-2xl text-center mb-6">Register</legend>
 
