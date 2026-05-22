@@ -16,7 +16,6 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* ZONE 1: Left - Brand Logo & Name */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-2 select-none">
               <svg 
@@ -39,7 +38,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* ZONE 2: Middle - Navigation Links (Responsive) */}
           <div className="flex items-center justify-center flex-1 px-2 sm:px-6">
             <div className="flex items-center gap-3 sm:gap-6 overflow-x-auto no-scrollbar max-w-full">
               <Link 
@@ -60,7 +58,6 @@ const Navbar = () => {
               >
                 Dashboard
               </NavLink>
-              {/* Conditional Private Route */}
               {user && (
                 <Link 
                   href="/dashboard" 
@@ -72,10 +69,8 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* ZONE 3: Right - User/Auth Profiles */}
           <div className="flex-shrink-0 flex items-center gap-2 sm:gap-3">
             {user ? (
-              // Authenticated View: Profile Picture + Logout Button
               <div className="flex items-center gap-2 sm:gap-3">
 
 <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
@@ -87,18 +82,12 @@ const Navbar = () => {
     className="rounded-full object-cover border-2 border-blue-500"
   />
 </div>
-                {/* <button 
-                  onClick={handleLogout}
-                  className="px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50 rounded-lg transition-all whitespace-nowrap"
-                >
-                  Logout
-                </button> */}
+              
                   <button
 className='btn btn-neutral font-bold' onClick={async()=> await authClient.signOut()}>Logout
   </button>
               </div>
             ) : (
-              // Unauthenticated View: Login + Register CTAs
               <div className="flex items-center gap-1 sm:gap-2">
                 <Link 
                   href="/login" 
