@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { LuBriefcase, LuMapPin, LuStar } from 'react-icons/lu';
 import { FaRegHospital } from 'react-icons/fa';
+import Image from 'next/image';
 // Importing specific, polished icons from the react-icons package
 // import { LuBriefcase, LuStar, LuMapPin } from 'react-icons/lu';
 // import { FaHospitalReg } from 'react-icons/fa';
@@ -18,19 +19,29 @@ export default function DoctorCard({ doctor }) {
       <div>
         {/* Profile Card Header */}
         <div className="flex gap-4 items-start">
-          <img 
+               <Image
+                      src={doctor?.image || "https://randomuser.me/api/portraits/men/67.jpg"} 
+                        alt={doctor?.name || "Doctor Profile"} 
+                        width={500}
+                         height={300}
+                                          // priority
+                                          className="w-16 h-16 rounded-xl object-cover bg-slate-100 border border-slate-100"
+                                          // sizes="(max-width: 76px) 10vw, 4vw"
+                                      />
+          {/* <img 
             src={image} 
             alt={name} 
             className="w-16 h-16 rounded-xl object-cover bg-slate-100 border border-slate-100" 
-          />
-          <div className="space-y-1">
-            <h3 className="font-bold text-slate-900 text-lg tracking-tight">{name}</h3>
+          /> */}
+          
+        </div>
+
+<div className="space-y-1">
+            <h3 className="font-bold text-slate-900 text-xl tracking-tight">{name}</h3>
             <p className="text-sm font-semibold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-md inline-block">
               {specialty}
             </p>
           </div>
-        </div>
-
         {/* Experience & Rating Strip */}
         <div className="grid grid-cols-2 gap-2 my-5 pt-4 border-t border-slate-50 text-xs text-slate-600">
           <div className="flex items-center gap-1.5">

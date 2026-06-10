@@ -4,13 +4,13 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Button } from '@heroui/react';
 
 const Register = () => {
   const router = useRouter();
   const {
     register,
-    handleSubmit,
-    watch,
+
     formState: { errors },
   } = useForm()
 
@@ -84,7 +84,7 @@ console.log(user)
   </div>
   </div>
 
-    <button type="submit" className="btn btn-neutral w-full mt-6 text-sm sm:text-base">Register</button>
+    <Button type="submit" variant='secondary' className="btn btn-neutral w-full mt-6 text-sm sm:text-base">Register</Button>
 </fieldset>
     </form>
     

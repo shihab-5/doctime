@@ -58,14 +58,14 @@ const Navbar = () => {
               >
                 Dashboard
               </NavLink>
-              {user && (
+              {/* {user && (
                 <Link 
                   href="/dashboard" 
                   className="text-xs sm:text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors whitespace-nowrap px-1 py-2"
                 >
                   Dashboard
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
 

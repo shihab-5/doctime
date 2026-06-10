@@ -8,7 +8,6 @@ const db = client.db("doctime");
 export const auth = betterAuth({
   trustedOrigins: ['http://localhost:3000',],
   database: mongodbAdapter(db, {
-    // Optional: if you don't provide a client, database transactions won't be enabled.
     client
   }),
   socialProviders: {
