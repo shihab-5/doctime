@@ -58,14 +58,7 @@ const Navbar = () => {
               >
                 Dashboard
               </NavLink>
-              {/* {user && (
-                <Link 
-                  href="/dashboard" 
-                  className="text-xs sm:text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors whitespace-nowrap px-1 py-2"
-                >
-                  Dashboard
-                </Link>
-              )} */}
+    
             </div>
           </div>
 
@@ -75,7 +68,7 @@ const Navbar = () => {
 
 <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
   <Image
-    src={user?.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150"} 
+    src={user?.image} 
     alt={user?.displayName || "User Profile"} 
     fill
     sizes="(max-width: 640px) 32px, 40px"
