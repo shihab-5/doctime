@@ -5,7 +5,7 @@ import DashboardClient from '../components/DashboardClient';
 import { deleteUser } from '../lib/action';
 
 const Dashboard = async () => {
-  const session = await auth.api.getSession({
+  const session =await auth.api.getSession({
     headers: await headers(),
   });
   

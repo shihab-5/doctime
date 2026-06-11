@@ -1,4 +1,4 @@
-  'use server'
+"use server"
 
 import { revalidatePath } from "next/cache";
 
@@ -43,5 +43,23 @@ export const editProfile = async (user,id) => {
       // credentials: "include"
     });
     const data = await res.json();
+
+      revalidatePath('/user');
+
+    return data;
+}
+export const editBooking = async (bookingInfo,bookingId) => {
+
+ console.log('SERVER ACTION CALLED', bookingId, bookingInfo) 
+      const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingInfo),
+      // credentials: "include"
+    });
+    const data = await res.json();
+    revalidatePath('/bookings');
     return data;
 }

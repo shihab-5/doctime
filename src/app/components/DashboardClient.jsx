@@ -32,9 +32,9 @@ const DashboardClient = ({ user, initialBookings,deleteAction }) => {
   //   showToast('Redirecting to profile updates...', 'info');
   // };
 
-  const handleUpdateBooking = (id) => {
-    showToast(`Opening rescheduling window for booking #${id.slice(-4)}`, 'info');
-  };
+  // const handleUpdateBooking = (id) => {
+  //   showToast(`Opening rescheduling window for booking #${id.slice(-4)}`, 'info');
+  // };
 
   
   // const handleDelete = async (bookingId) => {
@@ -51,15 +51,14 @@ const handleDelete = async (bookingId) => {
     toast.error('Failed to cancel appointment');
   }
 };
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
+  const formatDate = (dateString, timeString) => {
+  const date = new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+  return timeString ? `${date} at ${timeString}` : date;
+};
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8 min-h-screen bg-slate-50/50 selection:bg-blue-500 selection:text-white relative">
@@ -245,13 +244,12 @@ const handleDelete = async (bookingId) => {
                             
                             <div className="flex items-center gap-2 text-slate-500 mt-3 text-xs bg-slate-50/80 border border-slate-100 w-fit px-2.5 py-1 rounded-lg">
                               <FiClock className="w-3.5 h-3.5 text-slate-400" />
-                              <span className="font-medium text-slate-600">{formatDate(booking.appointmentDate)}</span>
-                            </div>
+              <span className="font-medium text-slate-600">{formatDate(booking.appointmentDate, booking.appointTime)}</span>                            </div>
                           </div>
 
                           {/* Interactive Card Controls */}
                           <div className="flex items-center justify-end gap-2 pt-4 border-t border-slate-100/80 mt-4">
-                            <RescheduleModal bookingInfo={booking._id}></RescheduleModal>
+                            <RescheduleModal bookingInfo={booking}></RescheduleModal>
                             {/* <button
                               onClick={() => handleUpdateBooking(booking._id)}
                               className="px-3 py-1.5 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 rounded-lg text-xs font-bold tracking-wide transition-colors bg-white shadow-2xs"

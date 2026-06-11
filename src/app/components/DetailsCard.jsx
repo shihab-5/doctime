@@ -10,6 +10,7 @@ const DetailsCard = ({value}) => {
     const { data: session,isPending } = authClient.useSession()
      const user=session?.user
      const [appointDate,setDate]=useState(null)
+     const [appointTime,setTime]=useState(null)
      
     if (isPending) {
     return <div>Loading your profile...</div>;
@@ -17,13 +18,14 @@ const DetailsCard = ({value}) => {
     if (!user) {
     return <div>Please log in to continue.</div>;
      }
-    console.log(user.id,'user')
+    console.log(value)
     const handle=async()=>{
      const bookAppointment={
         userId :user.id,
         userName :user.name,
         useEmail:user.email,
         appointmentDate:new Date(appointDate),
+        appointTime,
         appointmentId:value._id,
         appointName:value.name,
         specialty:value.specialty,
@@ -109,7 +111,36 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
                                                 </div>
             
                                                 {/* Fixed: Valid HeroUI DatePicker API */}
-                                                <div className="w-full max-w-[280px] pt-2">
+    <div className="flex flex-col sm:flex-row gap-3 pt-2 items-center">
+  {/* Time Field */}
+  <div className="flex flex-col gap-1">
+    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Time</label>
+    <input
+      type="time"
+      onChange={(e) => setTime(e.target.value)}
+      className="w-[160px] px-3 py-2 text-sm border border-slate-200 rounded-xl bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+
+  {/* Existing DateField — unchanged */}
+  <div className="flex flex-col gap-1">
+    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Date</label>
+    <div className="w-full max-w-[280px]">
+     <DateField onChange={setDate}>
+                <Label />
+                <DateField.Group>
+                  <DateField.Input>
+                    {(segment) => <DateField.Segment segment={segment} />}
+                  </DateField.Input>
+                </DateField.Group>
+                <Description />
+                <FieldError />
+              </DateField>
+    </div>
+  </div>
+</div>
+                                                {/* <div className="w-full max-w-[280px] pt-2">
+
               <DateField onChange={setDate}>
                 <Label />
                 <DateField.Group>
@@ -120,7 +151,7 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
                 <Description />
                 <FieldError />
               </DateField>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
             

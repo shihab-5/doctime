@@ -6,7 +6,6 @@ import { editProfile } from '../lib/action';
 
 const ProfileUpdateModal = ({user}) => {
 
-  console.log(user)
       const onSubmit = async(e) => {
         e.preventDefault()
         const formData= new FormData(e.currentTarget)
@@ -14,7 +13,6 @@ const ProfileUpdateModal = ({user}) => {
         const updateUser=Object.fromEntries(formData.entries())
         console.log(user,'user')
     toast.success('updated profile successfully');
-
       const data= await editProfile(updateUser,user.id)
   // console.log(data)
   };
@@ -59,7 +57,7 @@ const ProfileUpdateModal = ({user}) => {
                     <Label>Name</Label>
                     <Input />
                   </TextField>
-                  <TextField className="w-full" defaultValue={user?.image} name="url" type='url' variant="secondary">
+                  <TextField className="w-full" defaultValue={user?.image} name="image" type='url' variant="secondary">
                     <Label>Image URL</Label>
                     <Input  />
                   </TextField>

@@ -9,11 +9,12 @@ import { FaGoogle } from 'react-icons/fa';
 
 const Login= () => {
 
-const handleGoogleLogin=async()=>{
-  const data = await authClient.signIn.social({
+const handleGoogleLogin = async () => {
+  await authClient.signIn.social({
     provider: "google",
+    callbackURL: "/",
   });
-}
+};
 const onSubmit=async(e)=>{
 e.preventDefault();
 
@@ -85,6 +86,7 @@ console.log(res,error)
     <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6">
         <p className='whitespace-nowrap text-center my-2'>or login with google</p>
         <button onClick={handleGoogleLogin}
+        type='button'
          className="btn bg-sky-300 hover:bg-sky-400 w-full text-black border-[#e5e5e5] text-sm sm:text-base flex justify-center items-center gap-2">
             <FaGoogle></FaGoogle>  Login with Google
 </button>

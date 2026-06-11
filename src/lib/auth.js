@@ -6,16 +6,28 @@ const client = new MongoClient(process.env.MONGODB_URI);
 const db = client.db("doctime");
 
 export const auth = betterAuth({
-  trustedOrigins: ['http://localhost:3000',],
+  trustedOrigins: [
+    "http://localhost:3000",
+  ],
+
   database: mongodbAdapter(db, {
-    client
+    client,
   }),
+
+  emailAndPassword: {
+    enabled: true,
+  },
+
   socialProviders: {
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID, 
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
-        }, },
-  emailAndPassword:{
-    enabled:true
-  }
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    },
+  },
+
+  account: {
+    accountLinking: {
+      enabled: true,
+    },
+  },
 });

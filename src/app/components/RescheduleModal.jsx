@@ -4,8 +4,59 @@ import { Button, Modal, Surface } from "@heroui/react";
 import { FiCalendar, FiDollarSign, FiLock, FiUser } from 'react-icons/fi';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
+import { editBooking } from '../lib/action';
 
-const RescheduleModal = ({ bookingInfo, onUpdateAction }) => {
+const RescheduleModal = ({ bookingInfo}) => {
+
+//       const onSubmit = async(e) => {
+//         e.preventDefault()
+//         console.log('success')
+//         const formData= new FormData(e.currentTarget)
+//         console.log(formData,'booking')
+//         const updateUser=Object.fromEntries(formData.entries())
+//         updateUser.appointmentDate = new Date(updateUser.appointmentDate);
+//         console.log(bookingInfo,'user')
+
+// console.log(updateUser,bookingInfo._id)
+
+//     const data= await editBooking(updateUser,bookingInfo._id)
+//         toast.success('updated profile successfully');
+
+//   // console.log(data)
+//   };
+const onSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const formData = new FormData(e.currentTarget);
+
+    const updateUser = {
+      userName: formData.get("userName"),
+      appointTime: formData.get("appointTime"),
+      appointmentDate: new Date(formData.get("appointmentDate")),
+    };
+
+    console.log("Updated Data:", updateUser);
+    console.log("Booking ID:", bookingInfo?._id);
+
+    if (!bookingInfo?._id) {
+      toast.error("Booking ID not found");
+      return;
+    }
+
+    const result = await editBooking(updateUser, bookingInfo._id);
+
+    console.log("Response:", result);
+
+    toast.success("Appointment updated successfully");
+  } catch (error) {
+    console.error("Update Error:", error);
+    toast.error("Failed to update appointment");
+  }
+};
+
+
+  console.log(bookingInfo)
   return (
     <div>
       <Modal>
@@ -15,37 +66,35 @@ const RescheduleModal = ({ bookingInfo, onUpdateAction }) => {
             <Modal.Dialog className="sm:max-w-md">
               <Modal.CloseTrigger />
               <Modal.Header>
-                <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                </Modal.Icon>
-                <Modal.Heading>Modify Appointment</Modal.Heading>
+               <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
+                             <svg 
+                           className="w-9 h-9 text-blue-600" 
+                           xmlns="http://www.w3.org/2000/svg" 
+                           viewBox="0 0 24 24" 
+                           fill="none" 
+                           stroke="currentColor" 
+                           strokeWidth="2.5" 
+                           strokeLinecap="round" 
+                           strokeLinejoin="round"
+                         >
+                           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                           <path d="M12 8v8"/>
+                           <path d="M9 12h6"/>
+                         </svg>
+                         </Modal.Icon>
+                         <Modal.Heading>Modify Appointment</Modal.Heading>
                 <p className="mt-1.5 text-sm leading-5 text-muted">
                   Review and update your appointment details below. Restricted fields remain locked for data integrity.
                 </p>
               </Modal.Header>
               
               <Modal.Body className="p-6">
+                <div>
+                  
+                </div>
                 <Surface variant="default">
                   <form 
-                    // onSubmit={async (e) => {
-                    //   e.preventDefault();
-                    //   const formData = new FormData(e.target);
-                      
-                    //   // Packaging values for controlled verification
-                    //   const updatedPayload = {
-                    //     ...bookingInfo,
-                    //     userName: formData.get("userName"),
-                    //     appointmentDate: new Date(formData.get("appointmentDate")).toString()
-                    //   };
-                      
-                    //   try {
-                    //     if (onUpdateAction) {
-                    //       await onUpdateAction(updatedPayload);
-                    //     }
-                    //     toast.success("Appointment modified successfully!");
-                    //   } catch (err) {
-                    //     toast.error("Failed to update booking modifications.");
-                    //   }
-                    // }} 
+                  onSubmit={onSubmit}
                     className="space-y-5 text-slate-800"
                   >
                     
@@ -79,7 +128,7 @@ const RescheduleModal = ({ bookingInfo, onUpdateAction }) => {
                     </div>
 
                     {/* EDITABLE SECTION: PATIENT & SCHEDULE UPDATE SLOTS */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
                           <FiUser className="w-3.5 h-3.5" /> Patient Name
@@ -97,13 +146,22 @@ const RescheduleModal = ({ bookingInfo, onUpdateAction }) => {
                         <label className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
                           <FiCalendar className="w-3.5 h-3.5" /> Appointment Date & Time
                         </label>
-                        <input
-                          type="datetime-local"
-                          name="appointmentDate"
-                          defaultValue={bookingInfo?.appointmentDate ? new Date(bookingInfo.appointmentDate).toISOString().slice(0, 16) : ""}
-                          className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white transition-all shadow-2xs"
-                          required
-                        />
+                     <div className="flex gap-3">
+  <input
+    type="date"
+    name="appointmentDate"
+    defaultValue={bookingInfo?.appointmentDate ? new Date(bookingInfo.appointmentDate).toISOString().slice(0, 10) : ""}
+    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white transition-all shadow-2xs"
+    required
+  />
+  <input
+    type="time"
+    name="appointTime"
+    defaultValue={bookingInfo?.appointTime || ""}
+    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white transition-all shadow-2xs"
+    required
+  />
+</div>
                       </div>
                     </div>
 
@@ -143,12 +201,13 @@ const RescheduleModal = ({ bookingInfo, onUpdateAction }) => {
                       <Button slot="close" type="button" variant="secondary" className="px-4 py-2 text-xs font-bold uppercase tracking-wider">
                         Cancel
                       </Button>
-                      <button 
+
+                   <button 
                         type="submit"
                         className="px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-95 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md shadow-blue-500/10 transition-opacity"
                       >
                         Save Changes
-                      </button>
+                      </button>   
                     </div>
 
                   </form>
