@@ -12,7 +12,7 @@ export const getAppointmentsDetails=async(userId)=>{
         headers:await headers()
 })
 
-    const res=await fetch(`http://localhost:5000/appointments/${userId}`,
+const res=await fetch(`http://localhost:5000/appointments/${userId}`,
         {
               headers:{
                 authorization:`Bearer ${token}`

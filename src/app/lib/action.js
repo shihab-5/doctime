@@ -1,13 +1,18 @@
 "use server"
 
+import { authClient } from "@/lib/auth-client";
 import { revalidatePath } from "next/cache";
 
 export const createUser = async (bookAppointment) => {
 
+  const {data:tokenData}=await authClient.token()
+  console.log(tokenData)
+
   const res = await fetch('http://localhost:5000/bookings', {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
+       authorization:`Bearer ${token}`
     },
     body: JSON.stringify(bookAppointment)
   });
@@ -20,9 +25,15 @@ export const createUser = async (bookAppointment) => {
 }
 
 export const deleteUser = async (bookingId) => {
+     const {token}=await auth.api.getToken({
+          headers:await headers()
+})
 
   const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+     headers: {
+       authorization:`Bearer ${token}`
+    },
   });
   const data = await res.json();
 
@@ -33,11 +44,15 @@ export const deleteUser = async (bookingId) => {
 }
 
 export const editProfile = async (user,id) => {
-  console.log(user,id)
+  // console.log(user,id)
+     const {data:tokenData}=await authClient.token()
+  console.log(tokenData)
      const res = await fetch(`http://localhost:5000/user/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+         authorization:`Bearer ${token}`
+
       },
       body: JSON.stringify(user),
       // credentials: "include"
@@ -50,11 +65,14 @@ export const editProfile = async (user,id) => {
 }
 export const editBooking = async (bookingInfo,bookingId) => {
 
+  const {data:tokenData}=await authClient.token()
+  console.log(tokenData)
  console.log('SERVER ACTION CALLED', bookingId, bookingInfo) 
       const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization:`Bearer ${token}`
       },
       body: JSON.stringify(bookingInfo),
       // credentials: "include"
