@@ -20,12 +20,11 @@ const Dashboard = async () => {
     );
   }
 
-  // Fetching booking data on the server side
-  // let bookingData = [];
-  // try {
+
     const res = await fetch(`http://localhost:5000/bookings/${user.id}`, {
-      cache: 'no-store', // Ensures fresh data on load
-    });
+      cache: 'no-store',
+    }
+  );
     // if (res.ok) {
      const bookingData = await res.json();
   //   }
