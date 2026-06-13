@@ -18,9 +18,9 @@ import toast from 'react-hot-toast';
 import RescheduleModal from './RescheduleModal';
 import ProfileUpdateModal from './ProfileUpdateModal';
 
-const DashboardClient = ({ user, initialBookings,deleteAction }) => {
+const DashboardClient = ({ user, bookingData,deleteAction }) => {
   const [activeTab, setActiveTab] = useState('profile'); // 'profile' or 'bookings'
-  const [bookings, setBookings] = useState(initialBookings);
+  const [bookings, setBookings] = useState(bookingData);
   const [tst, setToast] = useState(null);
 
   // Helper to trigger elegant non-blocking feedback toasts

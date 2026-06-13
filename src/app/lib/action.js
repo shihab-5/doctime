@@ -1,13 +1,21 @@
 "use server"
 
-import { authClient } from "@/lib/auth-client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+
+
+const getToken = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers()
+  });
+  return session?.session?.token;
+};
+
 
 export const createUser = async (bookAppointment) => {
 
-  const {data:tokenData}=await authClient.token()
-  console.log(tokenData)
-
+const token=await getToken()
   const res = await fetch('http://localhost:5000/bookings', {
     method: 'POST',
     headers: {
@@ -25,8 +33,8 @@ export const createUser = async (bookAppointment) => {
 }
 
 export const deleteUser = async (bookingId) => {
-     const {token}=await auth.api.getToken({
-          headers:await headers()
+  const { token } = await auth.api.getToken({
+    headers: await headers()
 })
 
   const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
@@ -45,13 +53,13 @@ export const deleteUser = async (bookingId) => {
 
 export const editProfile = async (user,id) => {
   // console.log(user,id)
-     const {data:tokenData}=await authClient.token()
-  console.log(tokenData)
-     const res = await fetch(`http://localhost:5000/user/${id}`, {
+    const { token } = await auth.api.getToken
+    ({ headers: await headers() });
+    const res = await fetch(`http://localhost:5000/user/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
-         authorization:`Bearer ${token}`
+      authorization:`Bearer ${token}`
 
       },
       body: JSON.stringify(user),
@@ -64,10 +72,9 @@ export const editProfile = async (user,id) => {
     return data;
 }
 export const editBooking = async (bookingInfo,bookingId) => {
-
-  const {data:tokenData}=await authClient.token()
-  console.log(tokenData)
- console.log('SERVER ACTION CALLED', bookingId, bookingInfo) 
+  const { token } = await auth.api.getToken({
+     headers: await headers() });
+  console.log('SERVER ACTION CALLED', bookingId, bookingInfo)
       const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
       method: "PATCH",
       headers: {
@@ -78,6 +85,6 @@ export const editBooking = async (bookingInfo,bookingId) => {
       // credentials: "include"
     });
     const data = await res.json();
-    revalidatePath('/bookings');
+    revalidatePath('/appointments');
     return data;
 }

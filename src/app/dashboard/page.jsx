@@ -19,20 +19,21 @@ const Dashboard = async () => {
       </div>
     );
   }
-
+   
+    const { token } = await auth.api.getToken
+      ({ headers: await headers() });
 
     const res = await fetch(`http://localhost:5000/bookings/${user.id}`, {
       cache: 'no-store',
+       headers: {
+            authorization:`Bearer ${token}`
+      
+            },
     }
   );
-    // if (res.ok) {
      const bookingData = await res.json();
-  //   }
-  // } catch (error) {
-  //   console.error("Failed to fetch bookings:", error);
-  // }
 
-  return <DashboardClient user={user} initialBookings={bookingData} deleteAction={deleteUser} />;
+  return <DashboardClient user={user} bookingData={bookingData} deleteAction={deleteUser} />;
 };
 
 export default Dashboard;
