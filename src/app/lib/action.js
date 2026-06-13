@@ -16,7 +16,7 @@ const getToken = async () => {
 export const createUser = async (bookAppointment) => {
 
 const token=await getToken()
-  const res = await fetch('http://localhost:5000/bookings', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -27,7 +27,7 @@ const token=await getToken()
   const data = await res.json();
 
   if (data.insertedId) {
-    revalidatePath('/dashboard'); // ✅ your Next.js page URL
+    revalidatePath('/dashboard');
   }
   return data;
 }
@@ -37,7 +37,7 @@ export const deleteUser = async (bookingId) => {
     headers: await headers()
 })
 
-  const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${bookingId}`, {
     method: 'DELETE',
      headers: {
        authorization:`Bearer ${token}`
@@ -55,7 +55,7 @@ export const editProfile = async (user,id) => {
   // console.log(user,id)
     const { token } = await auth.api.getToken
     ({ headers: await headers() });
-    const res = await fetch(`http://localhost:5000/user/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -75,7 +75,7 @@ export const editBooking = async (bookingInfo,bookingId) => {
   const { token } = await auth.api.getToken({
      headers: await headers() });
   console.log('SERVER ACTION CALLED', bookingId, bookingInfo)
-      const res = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${bookingId}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

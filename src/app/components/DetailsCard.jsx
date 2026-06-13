@@ -35,7 +35,7 @@ const DetailsCard = ({value}) => {
          console.log(bookAppointment)
         
      const {data:tokenData}=await authClient.token();
-             const res=await fetch('http://localhost:5000/bookings',{
+             const res=await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`,{
                  method:'POST',
                  headers:{
                      'Content-type':'application/json',
@@ -57,11 +57,9 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
         <div>
              <main className="min-h-screen bg-slate-50/60 py-8 px-4 sm:px-6">
                         <div className="max-w-4xl mx-auto">
-                            {/* Fixed: Flat Card Component Structure */}
                             <Card className="bg-white border border-slate-100 shadow-xl rounded-3xl overflow-hidden p-6 sm:p-10">
                                 <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
                                     
-                                    {/* BIG IMAGE CONTAINER */}
                                     <div className="md:col-span-2 relative aspect-[4/5] md:h-full w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-100 shadow-sm">
                                         <Image
                                             src={value?.image || "https://randomuser.me/api/portraits/men/67.jpg"} 
@@ -73,7 +71,6 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
                                         />
                                     </div>
             
-                                    {/* DATA & DETAILS COLUMN */}
                                     <div className="md:col-span-3 space-y-6 flex flex-col justify-between h-full">
                                         <div className="space-y-4">
                                             <div className="space-y-1">
@@ -101,7 +98,6 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
                                                 {value?.description}
                                             </p>
             
-                                            {/* Location Details & Date Input Section */}
                                             <div className="space-y-4 pt-2">
                                                 <div className="flex items-start gap-2.5 text-sm text-slate-600">
                                                     <FaRegHospital className="text-slate-400 text-lg mt-0.5 flex-shrink-0" />
@@ -113,7 +109,6 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
                                                     </div>
                                                 </div>
             
-                                                {/* Fixed: Valid HeroUI DatePicker API */}
     <div className="flex flex-col sm:flex-row gap-3 pt-2 items-center">
   {/* Time Field */}
   <div className="flex flex-col gap-1">
@@ -125,7 +120,6 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
     />
   </div>
 
-  {/* Existing DateField — unchanged */}
   <div className="flex flex-col gap-1">
     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Date</label>
     <div className="w-full max-w-[280px]">
@@ -142,19 +136,7 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
     </div>
   </div>
 </div>
-                                                {/* <div className="w-full max-w-[280px] pt-2">
-
-              <DateField onChange={setDate}>
-                <Label />
-                <DateField.Group>
-                  <DateField.Input>
-                    {(segment) => <DateField.Segment segment={segment} />}
-                  </DateField.Input>
-                </DateField.Group>
-                <Description />
-                <FieldError />
-              </DateField>
-                                                </div> */}
+                                              
                                             </div>
                                         </div>
             

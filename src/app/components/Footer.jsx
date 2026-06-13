@@ -2,17 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 
 const Footer = () => {
-  // Current year auto-updates cleanly without hydration errors
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-white border-t border-gray-100  mt-5">
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         
-        {/* Main Footer Layout Grid */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-gray-100">
           
-          {/* Left Block: Logo and Brand Name */}
           <div className="flex items-center gap-2 select-none">
             <svg 
               className="w-8 h-8 text-blue-600" 
@@ -33,7 +30,6 @@ const Footer = () => {
             </span>
           </div>
 
-          {/* Middle Block: Quick Semantic Internal Links */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link href="/" className="text-xs sm:text-sm text-gray-500 hover:text-blue-600 transition-colors">
               Home
@@ -46,10 +42,8 @@ const Footer = () => {
             </Link>
           </div>
 
-          {/* Right Block: Inline SVG Social Icons */}
           <div className="flex items-center gap-4">
             
-            {/* Facebook */}
             <a 
               href="https://facebook.com" 
               target="_blank" 
@@ -62,7 +56,6 @@ const Footer = () => {
               </svg>
             </a>
 
-            {/* Twitter / X */}
             <a 
               href="https://twitter.com" 
               target="_blank" 
@@ -75,7 +68,6 @@ const Footer = () => {
               </svg>
             </a>
 
-            {/* LinkedIn */}
             <a 
               href="https://linkedin.com" 
               target="_blank" 
@@ -91,7 +83,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Block: Legal/Copyright bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-400 text-center sm:text-left">
             &copy; {currentYear} DocTime. Healthcare simplified securely.

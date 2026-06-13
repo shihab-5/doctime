@@ -12,7 +12,6 @@ export default function HeroBanner() {
       tagline: "Comprehensive cardiovascular diagnostics, preventative care, and specialized treatment plans.",
       badge: "In-Hospital & Telehealth",
       metric: "12+ Verified Specialists",
-      // Pure SVG medical icon to represent the department visually
       icon: (
         <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -46,7 +45,6 @@ export default function HeroBanner() {
   return (
     <section className="relative overflow-hidden bg-slate-50 py-12 lg:py-20 border-b border-slate-100">
       
-      {/* BACKGROUND IMAGE ARCHITECTURE: Custom CSS Grid & Gradient Mesh */}
       <div className="absolute inset-0 z-0 opacity-60 mix-blend-multiply pointer-events-none" 
            style={{
              backgroundImage: `radial-gradient(#3b82f6 1px, transparent 1px), radial-gradient(#10b981 1px, transparent 1px)`,
@@ -55,14 +53,12 @@ export default function HeroBanner() {
            }} 
       />
       
-      {/* High-end ambient color blurs */}
       <div className="absolute top-0 right-0 z-0 h-[450px] w-[450px] rounded-full bg-gradient-to-br from-blue-400/20 to-cyan-300/10 blur-3xl transform translate-x-1/4 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 z-0 h-96 w-96 rounded-full bg-emerald-400/10 blur-3xl transform -translate-x-1/4 translate-y-1/4" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* LEFT COLUMN: Core Copy Text Block */}
           <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold tracking-wide">
               <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" /> 
@@ -79,7 +75,6 @@ export default function HeroBanner() {
               Skip the waiting room lines. Browse top-rated clinical specialists, view real-time calendar availability, and lock in your medical consultation instantly.
             </p>
 
-            {/* CTA Interaction Block */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
               <Link 
                 href="/appointments" 
@@ -95,7 +90,6 @@ export default function HeroBanner() {
               </a>
             </div>
 
-            {/* Performance Metrics Row */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/60 max-w-sm mx-auto lg:mx-0">
               <div>
                 <p className="text-2xl font-bold text-slate-900">99.4%</p>
@@ -112,11 +106,9 @@ export default function HeroBanner() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Interactive Card Presentation Area */}
           <div className="lg:col-span-7 w-full">
             <div className="bg-slate-900/5 p-4 sm:p-6 rounded-3xl border border-slate-200/40 backdrop-blur-md">
               
-              {/* Dynamic Presentation Card Window */}
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-100 transition-all duration-300">
                 <div className="flex justify-between items-start gap-4">
                   <span className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold">
@@ -127,7 +119,6 @@ export default function HeroBanner() {
                   </span>
                 </div>
 
-                {/* Live Functional Render Layout */}
                 <div className="flex items-start gap-4 mt-6">
                   <div className="p-3 bg-slate-50 border border-slate-100 rounded-xl flex-shrink-0">
                     {slidesData[activeSlide].icon}
@@ -155,7 +146,6 @@ export default function HeroBanner() {
                 </div>
               </div>
 
-              {/* Navigation Indicators */}
               <div className="flex items-center justify-between mt-4 px-2">
                 <div className="flex gap-2">
                   {slidesData.map((_, index) => (

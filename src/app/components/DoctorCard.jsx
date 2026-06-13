@@ -12,7 +12,6 @@ export default function DoctorCard({ doctor }) {
   return (
     <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
       
-      {/* Header: Image + Name + Specialty */}
       <div className="flex gap-4 items-center mb-4">
         <Image
           src={image || "https://randomuser.me/api/portraits/men/67.jpg"}
@@ -29,7 +28,6 @@ export default function DoctorCard({ doctor }) {
         </div>
       </div>
 
-      {/* Experience & Rating */}
       <div className="flex items-center justify-between text-xs text-slate-600 py-3 border-y border-slate-50">
         <div className="flex items-center gap-1.5">
           <LuBriefcase className="text-slate-400" />
@@ -42,7 +40,6 @@ export default function DoctorCard({ doctor }) {
         </div>
       </div>
 
-      {/* Hospital & Location */}
       <div className="space-y-1.5 text-sm text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100/50 my-4">
         <div className="flex items-center gap-2">
           <FaRegHospital className="text-slate-400 flex-shrink-0" />
@@ -54,7 +51,6 @@ export default function DoctorCard({ doctor }) {
         </div>
       </div>
 
-      {/* Availability Slots */}
       {doctor?.availability && (
         <div className="flex items-start gap-2 mb-4">
           <LuClock className="text-slate-400 text-sm mt-0.5 flex-shrink-0" />
@@ -68,7 +64,6 @@ export default function DoctorCard({ doctor }) {
         </div>
       )}
 
-      {/* Fee & CTA */}
       <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
         <div>
           <p className="text-xs text-slate-400 uppercase tracking-wider">Consultation Fee</p>

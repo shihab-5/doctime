@@ -98,9 +98,7 @@ const onSubmit = async (e) => {
                     className="space-y-5 text-slate-800"
                   >
                     
-                    {/* READ-ONLY SECTION: DOCTOR / CLINIC DATA SUMMARY */}
                     <div className="p-4 bg-slate-50 border border-slate-200/60 rounded-xl flex items-center gap-4 select-none">
-                      {/* Next.js Optimized Image Wrapper Container */}
                       <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
                         <Image
                           src={bookingInfo?.Image || bookingInfo?.image || "https://randomuser.me/api/portraits/men/80.jpg"} 
@@ -127,7 +125,6 @@ const onSubmit = async (e) => {
                       </div>
                     </div>
 
-                    {/* EDITABLE SECTION: PATIENT & SCHEDULE UPDATE SLOTS */}
                     <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
@@ -165,7 +162,6 @@ const onSubmit = async (e) => {
                       </div>
                     </div>
 
-                    {/* READ-ONLY SECTION: USER IDENTITY REFERENCE INTEGRITY KEYS */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
                       <div className="flex flex-col gap-1.5 opacity-75">
                         <label className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
@@ -196,7 +192,6 @@ const onSubmit = async (e) => {
                       </div>
                     </div>
 
-                    {/* MODAL ACTION CONTROLS */}
                     <div className="flex justify-end gap-2 pt-4 border-t border-slate-100 mt-6">
                       <Button slot="close" type="button" variant="secondary" className="px-4 py-2 text-xs font-bold uppercase tracking-wider">
                         Cancel

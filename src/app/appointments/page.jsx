@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { getAppointments } from '../lib/data';
 import DoctorCard from '../components/DoctorCard';
+import Search from '../components/search';
 
 const Appointments = async() => {
   const appointments = await getAppointments();
@@ -8,6 +9,9 @@ const Appointments = async() => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 min-h-screen bg-slate-50">
       
+      <Suspense>
+              <Search></Search>
+      </Suspense>
       <div className="mb-10 text-center sm:text-left space-y-2">
         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
           Available Medical Openings

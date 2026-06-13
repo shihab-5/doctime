@@ -21,10 +21,8 @@ export default function LiveClinicMetrics() {
           </p>
         </div>
 
-        {/* Valid Native SVG Circle Progress + HeroUI Muted Spinner */}
         <div className="flex items-center gap-5 bg-slate-800/40 p-4 rounded-2xl border border-slate-800 self-center sm:self-auto">
           <div className="relative flex items-center justify-center w-16 h-16">
-            {/* Background Circle */}
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
               <path
                 className="text-slate-700"
@@ -33,7 +31,6 @@ export default function LiveClinicMetrics() {
                 fill="none"
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               />
-              {/* Animated Progress Circle (100%) */}
               <path
                 className="text-emerald-500"
                 strokeWidth="3"
@@ -59,7 +56,6 @@ export default function LiveClinicMetrics() {
         </div>
       </div>
 
-      {/* System Counter Strip */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-800 text-center sm:text-left">
         <div>
           <p className="text-slate-500 text-xs">Consultations Today</p>

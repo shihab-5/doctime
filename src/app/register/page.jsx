@@ -24,11 +24,11 @@ console.log(user)
         const {name,email,image,password}=user
 
    const {user:res,error}=await authClient.signUp.email({
-        email:email, // user email address
-        password:password, // user password -> min 8 characters by default
-        name:name, // user display name
+        email:email, 
+        password:password, 
+        name:name, 
         image:image,
-        callbackURL: "/" // A URL to redirect to after the user verifies their email (optional) 
+        callbackURL: "/" 
         })
         console.log(res,error)
         if(error){

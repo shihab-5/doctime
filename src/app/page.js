@@ -1,17 +1,15 @@
 import HeroBanner from "./components/Banner";
-import LiveClinicMetrics from "./components/LiveClinicMetrics";
-import SavingsCalculator from "./components/SavingsCalculator";
-import TalkTimeGuarantee from "./components/TalkTimeBenefits";
-import TalkTimeBenefits from "./components/TalkTimeBenefits";
+import HowItWorks from "./components/HowItWorks";
 import TopDoc from "./components/TopDoc";
+import WhyChooseUs from "./components/whyChooseUs";
 
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
 <HeroBanner></HeroBanner>
 <TopDoc></TopDoc>
-<TalkTimeGuarantee></TalkTimeGuarantee>
-<LiveClinicMetrics></LiveClinicMetrics>
+<WhyChooseUs></WhyChooseUs>
+<HowItWorks></HowItWorks>
     </div>
   );
 }

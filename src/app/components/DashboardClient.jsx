@@ -19,21 +19,13 @@ import RescheduleModal from './RescheduleModal';
 import ProfileUpdateModal from './ProfileUpdateModal';
 
 const DashboardClient = ({ user, bookingData,deleteAction }) => {
-  const [activeTab, setActiveTab] = useState('profile'); // 'profile' or 'bookings'
+  const [activeTab, setActiveTab] = useState('profile'); // 
   const [bookings, setBookings] = useState(bookingData);
-  const [tst, setToast] = useState(null);
+  // const [tst, setToast] = useState(null);
 
-  // Helper to trigger elegant non-blocking feedback toasts
-  const showToast = (message, type = 'success') => {
-    setToast({ message, type });
-    setTimeout(() => setToast(null), 4000);
-  };
-  // const handleUpdateProfile = (e) => {
-  //   showToast('Redirecting to profile updates...', 'info');
-  // };
-
-  // const handleUpdateBooking = (id) => {
-  //   showToast(`Opening rescheduling window for booking #${id.slice(-4)}`, 'info');
+  // const showToast = (message, type = 'success') => {
+  //   setToast({ message, type });
+  //   setTimeout(() => setToast(null), 4000);
   // };
 
   
@@ -64,7 +56,7 @@ const handleDelete = async (bookingId) => {
     <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8 min-h-screen bg-slate-50/50 selection:bg-blue-500 selection:text-white relative">
       
       {/* Dynamic Notification Toast System */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {tst && (
           <motion.div
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -80,9 +72,8 @@ const handleDelete = async (bookingId) => {
             <span>{tst.message}</span>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
-      {/* Header section matches navbar brand styling */}
       
       <div className="mb-10 flex flex-col md:items-center md:justify-between gap-6 pb-6 border-b border-slate-200/60">
         <div>
@@ -96,7 +87,6 @@ const handleDelete = async (bookingId) => {
           <p className="text-slate-500 text-sm mt-0.5">Manage your medical profiles, historical timelines, and appointments.</p>
         </div>
 
-        {/* Tab Toggle Control Switch */}
         <div className="relative bg-slate-100 p-1 rounded-xl flex items-center w-full md:w-80 border border-slate-200/40 shadow-inner">
           <button
             onClick={() => setActiveTab('profile')}
@@ -134,12 +124,10 @@ const handleDelete = async (bookingId) => {
         </div>
       </div>
 
-      {/* Main Container Workspace */}
       <main className="bg-white rounded-2xl border border-slate-200/70 p-6 md:p-10 shadow-sm overflow-hidden min-h-[420px]">
         <AnimatePresence mode="wait">
           {activeTab === 'profile' ? (
             
-            /* MODERNIZED PROFILE VIEW */
             <motion.div
               key="profile"
               initial={{ opacity: 0, y: 10 }}
@@ -177,7 +165,6 @@ const handleDelete = async (bookingId) => {
             </motion.div>
           ) : (
             
-            /* MODERNIZED BOOKINGS VIEW */
             <motion.div
               key="bookings"
               initial={{ opacity: 0, y: 10 }}
@@ -215,7 +202,6 @@ const handleDelete = async (bookingId) => {
                         transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                         className="bg-white border border-slate-200/80 hover:border-blue-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row gap-4 relative group"
                       >
-                        {/* Avatar styling with placeholder error handling defaults */}
                         <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-100">
                           <Image
                             src={booking.Image || booking.image || "https://randomuser.me/api/portraits/men/54.jpg"}
@@ -225,7 +211,6 @@ const handleDelete = async (bookingId) => {
                           />
                         </div>
 
-                        {/* Booking metadata */}
                         <div className="flex-1 flex flex-col justify-between min-w-0">
                           <div>
                             <div className="flex items-start justify-between gap-4">
@@ -247,7 +232,6 @@ const handleDelete = async (bookingId) => {
               <span className="font-medium text-slate-600">{formatDate(booking.appointmentDate, booking.appointTime)}</span>                            </div>
                           </div>
 
-                          {/* Interactive Card Controls */}
                           <div className="flex items-center justify-end gap-2 pt-4 border-t border-slate-100/80 mt-4">
                             <RescheduleModal bookingInfo={booking}></RescheduleModal>
                             {/* <button
