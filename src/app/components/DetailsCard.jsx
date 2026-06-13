@@ -115,6 +115,7 @@ toast.success("A healthier tomorrow begins today. Your appointment is confirmed.
     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Time</label>
     <input
       type="time"
+      required
       onChange={(e) => setTime(e.target.value)}
       className="w-[160px] px-3 py-2 text-sm border border-slate-200 rounded-xl bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
