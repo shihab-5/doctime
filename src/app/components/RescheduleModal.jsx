@@ -8,22 +8,7 @@ import { editBooking } from '../lib/action';
 
 const RescheduleModal = ({ bookingInfo}) => {
 
-//       const onSubmit = async(e) => {
-//         e.preventDefault()
-//         console.log('success')
-//         const formData= new FormData(e.currentTarget)
-//         console.log(formData,'booking')
-//         const updateUser=Object.fromEntries(formData.entries())
-//         updateUser.appointmentDate = new Date(updateUser.appointmentDate);
-//         console.log(bookingInfo,'user')
 
-// console.log(updateUser,bookingInfo._id)
-
-//     const data= await editBooking(updateUser,bookingInfo._id)
-//         toast.success('updated profile successfully');
-
-//   // console.log(data)
-//   };
 const onSubmit = async (e) => {
   e.preventDefault();
 

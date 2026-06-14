@@ -21,12 +21,7 @@ import ProfileUpdateModal from './ProfileUpdateModal';
 const DashboardClient = ({ user, bookingData,deleteAction }) => {
   const [activeTab, setActiveTab] = useState('profile'); // 
   const [bookings, setBookings] = useState(bookingData);
-  // const [tst, setToast] = useState(null);
-
-  // const showToast = (message, type = 'success') => {
-  //   setToast({ message, type });
-  //   setTimeout(() => setToast(null), 4000);
-  // };
+  
 
   
   // const handleDelete = async (bookingId) => {
@@ -55,24 +50,7 @@ const handleDelete = async (bookingId) => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8 min-h-screen bg-slate-50/50 selection:bg-blue-500 selection:text-white relative">
       
-      {/* Dynamic Notification Toast System */}
-      {/* <AnimatePresence>
-        {tst && (
-          <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-xl shadow-xl border text-sm font-medium backdrop-blur-md ${
-              tst.type === 'error' ? 'bg-rose-50/90 border-rose-100 text-rose-800' :
-              tst.type === 'info' ? 'bg-amber-50/90 border-amber-100 text-amber-800' :
-              'bg-emerald-50/90 border-emerald-100 text-emerald-800'
-            }`}
-          >
-            <FiAlertCircle className="w-4 h-4 flex-shrink-0" />
-            <span>{tst.message}</span>
-          </motion.div>
-        )}
-      </AnimatePresence> */}
+   
 
       
       <div className="mb-10 flex flex-col md:items-center md:justify-between gap-6 pb-6 border-b border-slate-200/60">
