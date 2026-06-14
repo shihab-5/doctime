@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Doctime
 
-## Getting Started
+Live site (client): https://doctime.vercel.app
 
-First, run the development server:
+Doctime is a lightweight appointment-booking and telemedicine frontend built with Next.js and React. It helps patients discover vetted medical professionals and schedule appointments quickly.
+
+Key features
+- Book appointments with verified medical specialists and view available time slots.
+- Fast, server-rendered pages using Next.js for good SEO and performance.
+- Search and filter doctors by name and specialty with client-side routing.
+- Secure user authentication and session handling for booking management.
+- Responsive, accessible UI components and smooth interactions.
+
+Quick start (local development)
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Copy environment variables (example `.env`):
+
+Set `NEXT_PUBLIC_SERVER_URL` to your API server (or leave blank to use relative paths):
+
+```env
+NEXT_PUBLIC_SERVER_URL=http://localhost:5000
+```
+
+3. Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- This project is ready for deployment on Vercel. Configure environment variables in your Vercel project dashboard.
 
-## Learn More
+Contributing
 
-To learn more about Next.js, take a look at the following resources:
+- Pull requests and issues are welcome. Please open an issue first for larger changes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Replace the `Live site (client)` URL above with your real client URL if different.
