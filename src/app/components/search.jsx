@@ -5,22 +5,19 @@ import { Input, Button } from "@heroui/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 
-export default function Search() {
+ const  Search=()=> {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") || "");
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("search"));
+
+ 
 
   const handleSearch = (e) => {
     e.preventDefault();
-//     // Updates the URL: /appointments?search=doctorName
-//     const params = new URLSearchParams(searchParams);
-//     if (searchTerm) {
-//       params.set("search", searchTerm);
-//     } else {
-//       params.delete("search");
-//     }
-//     router.push(`/appointments?${params.toString()}`);
-
+    const params = new URLSearchParams(searchParams?.toString());
+    if (searchTerm) params.set("search", searchTerm);
+    else params.delete("search");
+    router.push(`/appointments?${params.toString()}`);
   };
 console.log(searchTerm)
 
@@ -40,10 +37,10 @@ console.log(searchTerm)
       <Button 
         type="submit" 
         color="primary" 
-        className="h-14"
       >
         Search
       </Button>
     </form>
   );
 }
+export default Search;

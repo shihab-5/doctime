@@ -3,8 +3,21 @@ import { getAppointments } from '../lib/data';
 import DoctorCard from '../components/DoctorCard';
 import Search from '../components/search';
 
-const Appointments = async() => {
-  const appointments = await getAppointments();
+   const fetchName = async (search = "") => {
+      const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/appointments?search=${encodeURIComponent(search)}`
+  );
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data;
+  };
+
+const Appointments = async({searchParams}) => {
+  const value=await searchParams
+
+  const appointments = await fetchName(value.search);
+
+
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 min-h-screen bg-slate-50">
