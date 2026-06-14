@@ -1,46 +1,78 @@
-# Doctime
+DocAppoint: Doctor Appointment Manager
+DocAppoint is a modern, responsive web application built with Next.js that streamlines the process of finding and booking appointments with vetted medical professionals. It features a secure authentication system, intuitive dashboard management, and a seamless user experience for patients.
 
-Live site (client): https://doctime.vercel.app
+Live Site URL: https://your-live-site-url.vercel.app
 
-Doctime is a lightweight appointment-booking and telemedicine frontend built with Next.js and React. It helps patients discover vetted medical professionals and schedule appointments quickly.
+🌟 Key Features
+Seamless Booking System: Easily browse medical specialists, view availability, and schedule appointments with a few clicks.
 
-Key features
-- Book appointments with verified medical specialists and view available time slots.
-- Fast, server-rendered pages using Next.js for good SEO and performance.
-- Search and filter doctors by name and specialty with client-side routing.
-- Secure user authentication and session handling for booking management.
-- Responsive, accessible UI components and smooth interactions.
+Secure Authentication: Powered by Better Auth (JWT/Session), ensuring user data privacy and seamless protected routing.
 
-Quick start (local development)
+Personalized Dashboard: Manage your appointments (update/delete) and personal profile from a dedicated user area.
 
-1. Install dependencies:
+Dynamic Search & Filtering: Quickly find doctors by name or specialty using optimized client-side search.
 
-```bash
+Responsive & Accessible UI: Built with a modern design system ensuring a consistent experience across mobile, tablet, and desktop devices.
+
+🚀 Quick Start
+Follow these steps to set up the project locally.
+
+1. Prerequisites
+Ensure you have Node.js (v18+) and npm/yarn/pnpm installed.
+
+2. Installation
+Clone the repository and install the dependencies:
+
+Bash
+git clone https://github.com/yourusername/docappoint-client.git
+cd docappoint-client
 npm install
-```
+3. Environment Variables
+Create a .env file in the root directory and configure the following:
 
-2. Copy environment variables (example `.env`):
-
-Set `NEXT_PUBLIC_SERVER_URL` to your API server (or leave blank to use relative paths):
-
-```env
+Code snippet
 NEXT_PUBLIC_SERVER_URL=http://localhost:5000
-```
+NEXT_PUBLIC_AUTH_SECRET=your_secret_key
+# Add other required API/Auth keys here
+4. Running the Project
+Start the development server:
 
-3. Run the dev server:
-
-```bash
+Bash
 npm run dev
-```
-
 Open http://localhost:3000 in your browser.
 
-Deployment
+🛠 Tech Stack
+Frontend: Next.js (App Router), Tailwind CSS, Framer Motion
 
-- This project is ready for deployment on Vercel. Configure environment variables in your Vercel project dashboard.
+Components: HeroUI (NextUI)
 
-Contributing
+State Management: TanStack Query (React Query)
 
-- Pull requests and issues are welcome. Please open an issue first for larger changes.
+Authentication: Better Auth (JWT)
 
-Replace the `Live site (client)` URL above with your real client URL if different.
+Icons: React Icons
+
+Deployment: Vercel
+
+📂 Project Structure
+Plaintext
+├── src/
+│   ├── app/           # Next.js App Router (Pages & Layouts)
+│   ├── components/    # Reusable UI components (Navbar, Footer, Cards)
+│   ├── hooks/         # Custom hooks for auth & API interaction
+│   ├── lib/           # Utility functions and config
+│   └── styles/        # Global CSS and Tailwind directives
+├── public/            # Static assets
+└── package.json
+📝 Contributing
+Contributions are welcome! Please follow these steps for larger changes:
+
+Fork the repository.
+
+Create your feature branch (git checkout -b feature/amazing-feature).
+
+Commit your changes (ensure meaningful commit messages).
+
+Push to the branch.
+
+Open a Pull Request.
